@@ -14,9 +14,10 @@ class disposable_database:
     def __enter__(self):
         self.conn = sqlite3.connect(self.pd)
         self.cursor = self.conn.cursor()
-        return self.cursor
+        return self.conn
     
     def __exit__(self, exc_type, exc_value, traceback):
+        self.conn.commit()
         self.conn.close()
         os.remove(self.pd)
 
@@ -27,8 +28,9 @@ class query_manager:
 
         def create_wrap(name):
             def q(self, **kwargs):
-                return self.cursor.execute(self.sqls[name], **kwargs)
+                return self.cursor.execute(self.sqls[name], kwargs)
             return q
+        
         for d in os.listdir(path_to_sqls):
             if not d.endswith('.sql'):
                 continue

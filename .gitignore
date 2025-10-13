@@ -4,3 +4,4 @@ venv
 env
 .trash
 *.db
+__pycache__

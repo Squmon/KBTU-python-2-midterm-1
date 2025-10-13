@@ -1,0 +1,1 @@
+INSERT INTO students VALUES (:fullname, :age)
