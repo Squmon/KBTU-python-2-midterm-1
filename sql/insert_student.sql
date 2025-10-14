@@ -1,1 +1,1 @@
-INSERT INTO students VALUES (:fullname, :age)
+INSERT INTO students VALUES (:fullname, :Math, :Physics, :DuckScience, :ICT, :English);
