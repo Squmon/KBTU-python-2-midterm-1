@@ -1,4 +1,11 @@
 CREATE TABLE IF NOT EXISTS students (
+
+        id PRIMARY KEY,
         fullname TEXT,
-        age INT
+        Math FLOAT,
+        Physics FLOAT,
+        DuckScience FLOAT,
+        ICT FLOAT,
+        English FLOAT,
+
     )
