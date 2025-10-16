@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Управление студентами</h1>
+        <div class="section">
+            <p>Получение всех студентов</p>
+            <button onclick="all_students()">Получить всех студентов</button>
+        </div>
+        <div class="section">
+            <p>Получение конкретного студента</p>
+            <input type="text" id="student_name" placeholder="Имя студента" />
+            <button onclick="student_by_name()">По имени</button>
+            <input type="number" id="student_id" placeholder="ID студента" />
+            <button onclick="student_by_id()">По ID</button>
+        </div>
+        <div id="output-container" class="output">
+            <p>Тут будет выход</p>
+        </div>
+    </div>
+</body>
+</html>
