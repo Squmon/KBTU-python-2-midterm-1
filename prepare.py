@@ -1,4 +1,4 @@
-from utils import disposable_database, query_manager
+from utils import query_manager
 import random as rd
 import sqlite3
 
