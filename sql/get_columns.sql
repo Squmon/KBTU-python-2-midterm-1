@@ -1,0 +1,2 @@
+SELECT *
+FROM students.COLUMNS WHERE TABLE_NAME = N'students'
