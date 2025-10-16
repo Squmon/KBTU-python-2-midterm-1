@@ -1,1 +1,1 @@
-INSERT INTO students VALUES (:fullname, :Math, :Physics, :DuckScience, :ICT, :English, :AVG_GRADE);
+INSERT INTO students (fullname, Math, Physics, DuckScience,ICT, English) VALUES (:fullname, :Math, :Physics, :DuckScience, :ICT, :English);

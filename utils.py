@@ -22,13 +22,19 @@ class disposable_database:
         os.remove(self.pd)
 
 class query_manager:
-    def __init__(self, cursor, path_to_sqls):
+    def __init__(self, cursor, path_to_sqls = 'sql', path_to_database = None):
         self.sqls = dict()
         self.cursor = cursor
+        self.pd = path_to_database
 
         def create_wrap(name):
             def q(self, **kwargs):
-                return self.cursor.execute(self.sqls[name], kwargs)
+                try:
+                    return self.cursor.execute(self.sqls[name], kwargs)
+                except sqlite3.ProgrammingError:
+                    with sqlite3.connect(self.pd) as conn:
+                        cursor = conn.cursor()
+                        return cursor.execute(self.sqls[name], kwargs)
             return q
         
         for d in os.listdir(path_to_sqls):

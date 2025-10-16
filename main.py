@@ -1,26 +1,20 @@
-import random
 import webview
 from backend import backend
 
-
-be = backend("students.db")
-
 class API:
+    def __init__(self):
+        self.be = backend("students.db")
+
     def get_all_students(self):
-        return generate_table(
-            [['student name', 'student_id', 'sub1']] + [[random.randrange(0, 9) for _ in range(3)] for _ in range(10)]
-        )
-    
+        return generate_table(self.be.all_students())
+
     def get_by_name(self, name):
-        return generate_table(
-            [['student name', 'student_id', 'sub1']] + [[name]] + [[random.randrange(0, 9) for _ in range(2)] for _ in range(10)]
-        )
-    
+        # Получение студентов по имени через backend
+        return generate_table(self.be.qm.get_students_by_name_or_id(name=name, id=None).fetchall())
+
     def get_by_id(self, id):
-        id = int(id)
-        return generate_table(
-            [['student name', 'student_id', 'sub1', 'sub2']] + [["ilya"] ]+ [[id]] + [[random.randrange(0, 9) for _ in range(2)] for _ in range(10)]
-        )
+        # Получение студентов по ID через backend
+        return generate_table(self.be.qm.get_students_by_name_or_id(name=None, id=id).fetchall())
 
 def generate_table(content):
     source = '<table border = "1">'

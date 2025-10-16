@@ -6,13 +6,15 @@ class backend:
         self.pd = path_to_database
         self.conn = sqlite3.connect(path_to_database)
         self.cursor = self.conn.cursor()
-        self.qm = utils.query_manager(self.cursor, path_to_sqls)
+        self.qm = utils.query_manager(self.cursor, path_to_sqls, path_to_database)
 
     def close(self):
         self.conn.close()
 
     def all_students(self):
-        return self.qm.all_students()
+        #print(type(self.qm.all_students().fetchall()[0][0]))
+        columns = [row[1] for row in self.qm.get_columns().fetchall()]
+        return [columns] + self.qm.all_students().fetchall()
 
     def __del__(self):
         self.close()
