@@ -7,5 +7,7 @@ CREATE TABLE IF NOT EXISTS students (
         DuckScience FLOAT,
         ICT FLOAT,
         English FLOAT,
+        AVG REAL,
+        Grade TEXT
 
     )
