@@ -9,12 +9,10 @@ class API:
         return generate_table(self.be.all_students())
 
     def get_by_name(self, name):
-        # Получение студентов по имени через backend
-        return generate_table(self.be.qm.get_students_by_name_or_id(name=name, id=None).fetchall())
+        return generate_table(self.be.get_students_by_name(name))
 
     def get_by_id(self, id):
-        # Получение студентов по ID через backend
-        return generate_table(self.be.qm.get_students_by_name_or_id(name=None, id=id).fetchall())
+        return generate_table(self.be.get_student_by_id(id))
 
 def generate_table(content):
     source = '<table border = "1">'

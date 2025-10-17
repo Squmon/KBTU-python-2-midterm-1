@@ -1,6 +1,7 @@
 import sqlite3
 import utils
-# когда будет понятно какие именно методы будут нужны, то тут поменяем
+
+
 class backend:
     def __init__(self, path_to_database, path_to_sqls = "./sql"):
         self.pd = path_to_database
@@ -12,9 +13,16 @@ class backend:
         self.conn.close()
 
     def all_students(self):
-        #print(type(self.qm.all_students().fetchall()[0][0]))
         columns = [row[1] for row in self.qm.get_columns().fetchall()]
         return [columns] + self.qm.all_students().fetchall()
+
+    def get_student_by_id(self, student_id):
+        columns = [row[1] for row in self.qm.get_columns().fetchall()]
+        return [columns] + self.qm.get_students_by_name_or_id(name=None, id=student_id).fetchall()
+
+    def get_students_by_name(self, student_name):
+        columns = [row[1] for row in self.qm.get_columns().fetchall()]
+        return [columns] + self.qm.get_students_by_name_or_id(name=student_name, id=None).fetchall()
 
     def __del__(self):
         self.close()
