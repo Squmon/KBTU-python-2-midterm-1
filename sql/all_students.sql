@@ -1,13 +1,12 @@
-SELECT * FROM students
 SELECT
-    fullname,Math,Physics,DuckScience,ICT,English,
+    id, fullname, Math, Physics, DuckScience, ICT, English,
     ROUND((Math + Physics + DuckScience + ICT + English)/5.0, 2) AS Average,
     CASE
-        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >=90 THEN 'A'
-        WHEN (Math + Physics + DuckScience + ICT + English)/5.0>=80 THEN 'B'
-        WHEN (Math + Physics + DuckScience + ICT + English)/5.0>=70 THEN 'C'
-        WHEN (Math + Physics + DuckScience + ICT + English)/5.0>=60 THEN 'D'
-        WHEN (Math + Physics + DuckScience + ICT + English)/5.0>=50 THEN 'E'
+        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >= 90 THEN 'A'
+        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >= 80 THEN 'B'
+        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >= 70 THEN 'C'
+        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >= 60 THEN 'D'
+        WHEN (Math + Physics + DuckScience + ICT + English)/5.0 >= 50 THEN 'E'
         ELSE 'F'
     END AS Grade
 FROM students;
