@@ -1,5 +1,5 @@
 import pandas as pd
-from backend import backend
+from modules.backend import backend
 
 def display_table(data):
  if not data or len(data) <= 1:

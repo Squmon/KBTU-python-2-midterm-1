@@ -1,4 +1,4 @@
-from utils import query_manager
+from modules.utils import query_manager
 import random as rd
 import sqlite3
 
@@ -25,22 +25,8 @@ Sokolov, Imanbekov, Vasiliev, Abdullaeva, Loginov, Karimov,
     #turning names and surnames into the list so that we could use random.choice
     firstnames = [name.strip() for name in names.split(",") if name.strip()]
     lastnames = [surname.strip() for surname in surnames.split(",") if surname.strip()]
-    print(lastnames)
-    #writing a function that returns an average grade as a letter
-    def avgrade(avg):
-        if avg >= 90:
-            return "A"
-        elif avg >= 80:
-            return "B"
-        elif avg >= 70:
-            return "C"
-        elif avg >= 60:
-            return "D"
-        elif avg >= 50:
-            return "E"
-        else:
-            return "F"
-        #creating 50 students using random names and surnames and random grades from 40 to 100
+
+    #creating 50 students using random names and surnames and random grades from 40 to 100
     for i in range(50):
             first = rd.choice(firstnames)
             last = rd.choice(lastnames)
@@ -50,8 +36,6 @@ Sokolov, Imanbekov, Vasiliev, Abdullaeva, Loginov, Karimov,
             duck_science = rd.randint(40, 100)
             ict = rd.randint(40, 100)
             english = rd.randint(40, 100)
-            avg = round((math + physics + duck_science + ict + english) / 5, 2)
-            grade = avgrade(avg)
     #inserting students into the table
             qm.insert_student(fullname=fullname, Math=math, Physics=physics,
                             DuckScience=duck_science, ICT=ict, English=english)

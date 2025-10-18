@@ -5,3 +5,5 @@ env
 .trash
 *.db
 __pycache__
+results.txt
+.vscode
